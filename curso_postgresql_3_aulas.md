@@ -70,7 +70,6 @@ Isso permitirá revisar praticamente os principais comandos SQL.
 
 ## PostgreSQL, revisão de SQL e comandos básicos
 
-Duração: 3 horas
 
 ## Objetivos da aula
 
