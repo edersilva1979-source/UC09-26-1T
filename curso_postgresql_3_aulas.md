@@ -201,7 +201,7 @@ Vamos começar com clientes.
 
 ```sql
 CREATE TABLE cliente (
-    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(120),
     cidade VARCHAR(80),
@@ -215,7 +215,7 @@ CREATE TABLE cliente (
 ## id
 
 ```sql
-id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY
+id SERIAL PRIMARY KEY
 ```
 
 O campo id será o identificador de cada cliente.
@@ -523,7 +523,7 @@ Vamos criar uma tabela chamada categoria.
 
 ```sql
 CREATE TABLE categoria (
-    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     nome VARCHAR(80) NOT NULL
 );
 ```
@@ -551,7 +551,7 @@ FROM categoria;
 
 ```sql
 CREATE TABLE produto (
-    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     descricao VARCHAR(200),
     preco NUMERIC(10,2) NOT NULL,
@@ -695,7 +695,7 @@ Uma chave primária identifica um registro de maneira única.
 Exemplo:
 
 ```sql
-id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY
+id SERIAL PRIMARY KEY
 ```
 
 Cada cliente possui um id diferente.
@@ -800,7 +800,7 @@ ON p.categoria_id = c.id;
 
 ```sql
 CREATE TABLE pedido (
-    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     cliente_id INTEGER NOT NULL,
     data_pedido DATE DEFAULT CURRENT_DATE,
     status VARCHAR(30) DEFAULT 'ABERTO',
@@ -814,7 +814,7 @@ CREATE TABLE pedido (
 
 ```sql
 CREATE TABLE item_pedido (
-    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     pedido_id INTEGER NOT NULL,
     produto_id INTEGER NOT NULL,
     quantidade INTEGER NOT NULL,
