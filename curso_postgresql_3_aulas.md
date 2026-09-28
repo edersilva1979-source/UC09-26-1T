@@ -4,7 +4,7 @@
 
 Este material foi pensado para alunos que já tiveram contato com MySQL e agora irão conhecer o PostgreSQL.
 
-Ao longo de 3 aulas de 3 horas, nós vamos revisar SQL e, ao mesmo tempo, aprender como trabalhar com PostgreSQL na prática.
+Ao longo de 3 aulas, nós vamos revisar SQL e, ao mesmo tempo, aprender como trabalhar com PostgreSQL na prática.
 
 A proposta é usar comandos simples, exemplos próximos de situações reais e bastante prática.
 
