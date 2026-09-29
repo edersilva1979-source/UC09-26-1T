@@ -1094,6 +1094,16 @@ FROM produto;
 
 # 30. Exercício da aula 2
 
+## Crie um novo banco de dados Chamado aula02_sql
+Crie as tabelas 
+
+cliente
+produto
+pedido
+item_pedido
+
+use como referencias os mesmo campos criados no banco anterior.
+
 Crie consultas para responder:
 
 1. Qual é o total de clientes cadastrados?
