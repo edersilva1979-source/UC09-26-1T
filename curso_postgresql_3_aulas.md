@@ -662,7 +662,6 @@ DELETE
 
 ## Relacionamentos, JOIN, funções e agrupamentos
 
-Duração: 3 horas
 
 ## Objetivos da aula
 
@@ -1181,11 +1180,12 @@ COALESCE
 CASE
 ```
 
+
+
 # AULA 3
 
 ## SQL aplicado, subconsultas, views, transações e recursos do PostgreSQL
 
-Duração: 3 horas
 
 ## Objetivos da aula
 
