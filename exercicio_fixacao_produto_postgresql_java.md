@@ -279,6 +279,12 @@ Descrição: Teclado USB
 Estoque: 15
 Valor de venda: R$ 89.90
 ==============================
+
+ID: 2
+Descrição: NOTEBOOK
+Estoque: 5
+Valor de venda: R$ 3500.00
+==============================
 ```
 
 # 13. O que eu quero que vocês observem
