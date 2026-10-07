@@ -433,7 +433,7 @@ O PostgreSQL deverá impedir a gravação por causa do:
 NOT NULL
 ```
 
-# 18. Desafio extra
+# 18. Exercício 2
 
 Depois de concluir o exercício principal, vamos melhorar o programa.
 
