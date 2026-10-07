@@ -1,7 +1,7 @@
 <h1 align="center"> PostgreSQL para quem já conhece MySQL</h1>
 
 <div align="center">
-<img src="logo.png" width="300" alt="Exemplo">
+<img src="Java.png" width="500" alt="Exemplo">
 </div>
 
 
