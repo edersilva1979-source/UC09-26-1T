@@ -38,11 +38,6 @@ Vamos criar um banco de dados chamado:
 BD_controle_261T
 ```
 
-Comando:
-
-```sql
-CREATE DATABASE BD_controle_261T;
-```
 
 Depois de criar o banco, vamos abrir o Query Tool dentro dele.
 
@@ -160,32 +155,11 @@ import java.sql.SQLException;
 public class conexao {
 
     public static Connection conectar() {
+.
+.
+.
+.
 
-        Connection conexao = null;
-
-        String url = "jdbc:postgresql://localhost/BD_controle_261T";
-        String usuario = "postgres";
-        String senha = "root";
-
-        try {
-
-            conexao = DriverManager.getConnection(
-                    url,
-                    usuario,
-                    senha
-            );
-
-            System.out.println("Conexão realizada com sucesso!");
-
-        } catch (SQLException erro) {
-
-            System.out.println("Erro ao conectar com o banco.");
-            System.out.println(erro.getMessage());
-        }
-
-        return conexao;
-    }
-}
 ```
 
 A senha deverá ser alterada caso a senha do PostgreSQL do computador seja diferente de `root`.
@@ -234,27 +208,10 @@ Scanner scanner = new Scanner(System.in);
 
 Para a descrição:
 
-```java
-System.out.print("Digite a descrição do produto: ");
-String descricao = scanner.nextLine();
-```
-
 Para o estoque:
-
-```java
-System.out.print("Digite a quantidade em estoque: ");
-int estoque = Integer.parseInt(scanner.nextLine());
-```
 
 Para o valor de venda:
 
-```java
-System.out.print("Digite o valor de venda: ");
-String valorDigitado = scanner.nextLine();
-
-BigDecimal valorVenda =
-        new BigDecimal(valorDigitado.replace(",", "."));
-```
 
 Assim nós conseguimos aceitar valores digitados com vírgula ou ponto.
 
@@ -263,19 +220,21 @@ Assim nós conseguimos aceitar valores digitados com vírgula ou ponto.
 Vamos criar:
 
 ```java
-String sqlInsert = """
+.......
         INSERT INTO Produto
-        (descricao, estoque, valor_venda)
-        VALUES (?, ?, ?)
-        """;
+   .
+.
+.
+
 ```
 
 Agora preenchemos os valores:
 
 ```java
-stmt.setString(1, descricao);
-stmt.setInt(2, estoque);
-stmt.setBigDecimal(3, valorVenda);
+stmt.setString....
+.
+.
+.
 ```
 
 Temos:
@@ -290,166 +249,13 @@ Temos:
 
 Para executar o INSERT:
 
-```java
-int linhas = stmt.executeUpdate();
-```
-
-Depois:
-
-```java
-if (linhas > 0) {
-    System.out.println("Produto cadastrado com sucesso!");
-}
-```
 
 # 11. Criando o SELECT
 
 Depois de salvar, nós vamos consultar os produtos:
 
-```java
-String sqlSelect = """
-        SELECT id, descricao, estoque, valor_venda
-        FROM Produto
-        ORDER BY id
-        """;
-```
 
-Executamos:
-
-```java
-ResultSet resultado =
-        stmtConsulta.executeQuery();
-```
-
-E percorremos:
-
-```java
-while (resultado.next()) {
-```
-
-Para acessar as colunas:
-
-```java
-resultado.getInt("id");
-resultado.getString("descricao");
-resultado.getInt("estoque");
-resultado.getBigDecimal("valor_venda");
-```
-
-# 12. Código completo da classe principal
-
-```java
-package view;
-
-import conexao.conexao;
-import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Scanner;
-
-public class principal {
-
-    public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("==============================");
-        System.out.println("     CADASTRO DE PRODUTOS");
-        System.out.println("==============================");
-
-        System.out.print("Digite a descrição do produto: ");
-        String descricao = scanner.nextLine();
-
-        System.out.print("Digite a quantidade em estoque: ");
-        int estoque = Integer.parseInt(scanner.nextLine());
-
-        System.out.print("Digite o valor de venda: ");
-        String valorDigitado = scanner.nextLine();
-
-        BigDecimal valorVenda =
-                new BigDecimal(valorDigitado.replace(",", "."));
-
-        String sqlInsert = """
-                INSERT INTO Produto
-                (descricao, estoque, valor_venda)
-                VALUES (?, ?, ?)
-                """;
-
-        String sqlSelect = """
-                SELECT id, descricao, estoque, valor_venda
-                FROM Produto
-                ORDER BY id
-                """;
-
-        try (
-            Connection conex = conexao.conectar();
-            PreparedStatement stmt =
-                    conex.prepareStatement(sqlInsert)
-        ) {
-
-            stmt.setString(1, descricao);
-            stmt.setInt(2, estoque);
-            stmt.setBigDecimal(3, valorVenda);
-
-            int linhas = stmt.executeUpdate();
-
-            if (linhas > 0) {
-                System.out.println();
-                System.out.println("Produto cadastrado com sucesso!");
-            }
-
-            System.out.println();
-            System.out.println("==============================");
-            System.out.println("     PRODUTOS CADASTRADOS");
-            System.out.println("==============================");
-
-            try (
-                PreparedStatement stmtConsulta =
-                        conex.prepareStatement(sqlSelect);
-
-                ResultSet resultado =
-                        stmtConsulta.executeQuery()
-            ) {
-
-                while (resultado.next()) {
-
-                    int id = resultado.getInt("id");
-                    String desc = resultado.getString("descricao");
-                    int qtd = resultado.getInt("estoque");
-                    BigDecimal valor =
-                            resultado.getBigDecimal("valor_venda");
-
-                    System.out.println();
-                    System.out.println("ID: " + id);
-                    System.out.println("Descrição: " + desc);
-                    System.out.println("Estoque: " + qtd);
-                    System.out.println("Valor de venda: R$ " + valor);
-                    System.out.println("==============================");
-                }
-            }
-
-        } catch (SQLException erro) {
-
-            System.out.println();
-            System.out.println("Erro ao acessar o banco.");
-            System.out.println(erro.getMessage());
-
-        } catch (NumberFormatException erro) {
-
-            System.out.println();
-            System.out.println(
-                    "Estoque ou valor informado é inválido."
-            );
-        }
-
-        scanner.close();
-    }
-}
-```
-
-# 13. Resultado esperado
+# 12. Resultado esperado
 
 Exemplo:
 
@@ -475,7 +281,7 @@ Valor de venda: R$ 89.90
 ==============================
 ```
 
-# 14. O que eu quero que vocês observem
+# 13. O que eu quero que vocês observem
 
 Neste exercício nós utilizamos dois comandos SQL.
 
@@ -509,7 +315,7 @@ O resultado da consulta é recebido por:
 ResultSet
 ```
 
-# 15. Fluxo completo
+# 14. Fluxo completo
 
 ```text
 Início
@@ -539,7 +345,7 @@ Mostrar produtos
 Fim
 ```
 
-# 16. Regras obrigatórias do exercício
+# 15. Regras obrigatórias do exercício
 
 Para considerar o exercício concluído, eu vou verificar se vocês fizeram:
 
