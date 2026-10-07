@@ -1,6 +1,9 @@
-# UC09-26-1T
+<h1 align="center"> PostgreSQL para quem já conhece MySQL</h1>
 
-# PostgreSQL para quem já conhece MySQL
+<div align="center">
+<img src="Logo_completo.png" width="300" alt="Exemplo">
+</div>
+
 
 Este repositório contém o material de apoio de 3 aulas sobre PostgreSQL, cada uma com duração aproximada de 3 horas.
 
