@@ -440,27 +440,21 @@ Depois de concluir o exercício principal, vamos melhorar o programa.
 Antes do INSERT, verifique se a descrição ficou vazia:
 
 ```java
-if (descricao.isBlank()) {
+if (descricao.is....
+.
+.
+.
 
-    System.out.println(
-            "A descrição não pode ficar vazia."
-    );
-
-    return;
-}
 ```
 
 Também podemos verificar o valor:
 
 ```java
-if (valorVenda.compareTo(BigDecimal.ZERO) < 0) {
-
-    System.out.println(
-            "O valor de venda não pode ser negativo."
-    );
-
-    return;
-}
+if (valorVenda....
+.
+.
+.
+.
 ```
 
 Assim nós teremos validação no Java e também no PostgreSQL.
