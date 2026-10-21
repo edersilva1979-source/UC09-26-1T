@@ -76,6 +76,15 @@ public class frmConsultaAnimais extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnExcluir = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
+        txtId = new javax.swing.JTextField();
+        txtEspecie = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtIdade = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btnAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -90,6 +99,11 @@ public class frmConsultaAnimais extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblAnimais.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAnimaisMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblAnimais);
 
         btnAtualizaTabela.setBackground(new java.awt.Color(204, 255, 51));
@@ -111,6 +125,20 @@ public class frmConsultaAnimais extends javax.swing.JFrame {
         btnSair.setText("Sair");
         btnSair.addActionListener(this::btnSairActionPerformed);
 
+        txtId.setEditable(false);
+
+        jLabel2.setText("ID");
+
+        jLabel3.setText("Especie");
+
+        jLabel4.setText("Nome");
+
+        jLabel5.setText("Idade");
+
+        btnAlterar.setBackground(new java.awt.Color(204, 204, 0));
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(this::btnAlterarActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,40 +147,80 @@ public class frmConsultaAnimais extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbPesquisarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnLocalizar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbPesquisarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel3)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel4)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAtualizaTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSair)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                        .addComponent(btnSair)
+                        .addGap(150, 150, 150))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLocalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap()
+                .addComponent(cmbPesquisarPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLocalizar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbPesquisarPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLocalizar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAtualizaTabela)
-                            .addComponent(btnExcluir)
-                            .addComponent(btnSair)))
-                    .addComponent(jLabel1))
+                            .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAtualizaTabela)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnSair)
+                    .addComponent(btnAlterar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -271,6 +339,106 @@ public class frmConsultaAnimais extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void tblAnimaisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAnimaisMouseClicked
+        // Vamos Capturar a linha selecionada
+        int linha = tblAnimais.getSelectedRow();
+        
+        //Se não houver linha selecionada
+        if (linha == -1){
+            return;
+        }
+        
+        //Vamos preencher os valos das colunas para os campos da tela
+        txtId.setText(tblAnimais.getValueAt(linha,0).toString());
+        txtEspecie.setText(tblAnimais.getValueAt(linha,1).toString());
+        txtNome.setText(tblAnimais.getValueAt(linha,2).toString());
+        txtIdade.setText(tblAnimais.getValueAt(linha,3).toString());
+    }//GEN-LAST:event_tblAnimaisMouseClicked
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+         //1. Capturar a linha selecionada
+         int linha = tblAnimais.getSelectedRow();
+         
+         if (linha == -1){
+             JOptionPane.showMessageDialog(this,"Selecione um animal na tabela para alterar");
+             return;
+         }
+         
+         //2. Pegar o ID da limha selecionada
+         // O ID não será alterado.
+         int id = Integer.parseInt(tblAnimais.getValueAt(linha,0).toString());
+         
+         //3. Ler os novos valores digitados nos campos especie,nome, idade
+         String especie = txtEspecie.getText().trim();
+         String nome = txtNome.getText().trim();
+         String IdadeTexto = txtIdade.getText().trim();
+         
+         //4. Validar se todos os campos estão preenchidos
+         if (especie.isEmpty() || nome.isEmpty() || IdadeTexto.isEmpty()) {
+             JOptionPane.showMessageDialog(this, "Preecha todos os campos");
+             return;
+         }
+         
+         //5. Verificar se o Idade é um número inteiro válido
+         int idade;
+         
+         try {
+             idade = Integer.parseInt(IdadeTexto);
+             
+             if (idade < 0) {
+                 JOptionPane.showMessageDialog(this, "A idade não pode ser Negativa!");
+                 return;
+             }
+         } catch (NumberFormatException erro) {
+             JOptionPane.showMessageDialog(this,"A idade deve ser um número Inteiro");
+             return;
+         }
+         
+         // 6. Pedir Confirmação antes de gravar no banco de dados
+         int resposta = JOptionPane.showConfirmDialog(this, 
+                         "Deseja alterar os dados do animal de ID "+id+"?" ,
+                         "Confirmar Alteração",
+                         JOptionPane.YES_NO_CANCEL_OPTION,
+                         JOptionPane.QUESTION_MESSAGE);
+         if (resposta != JOptionPane.YES_OPTION) {
+             return;
+         }
+         
+         // 7. Alteramos apenas a escpecie, nome e idade
+         // O WHERE garante que somente o animal selecionado será atualziado
+         
+         String sql = """
+                      UPDATE animal
+                      SET especie = ?, nome = ?, idade = ?
+                      WHERE id = ?
+                      """;
+         
+         try (Connection conex = Conexao.conectar();
+              PreparedStatement stmt = conex.prepareStatement(sql)){
+             //8. Preecher os Parametros(?) na mesma ordem do SQL
+             stmt.setString(1,especie);
+             stmt.setString(2,nome);
+             stmt.setInt(3,idade);
+             stmt.setInt(4, id);
+             
+             //9. Executamos a alteração no Banco de Dados
+             int registros = stmt.executeUpdate();
+             if (registros > 0){
+                 JOptionPane.showMessageDialog(this, "Animal alterado com sucesso!");
+                 atualizarTabela();
+                 txtId.setText("");
+                 txtEspecie.setText("");
+                 txtNome.setText("");
+                 txtIdade.setText("");
+             } else {
+                 JOptionPane.showMessageDialog(this, "Animal não encontrado");
+             }
+         } catch (SQLException erro){
+           JOptionPane.showConfirmDialog(this, "Erro ao alterar animal: " + erro.getMessage());
+         }
+         
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
  
     public static void main(String args[]) {
 
@@ -278,14 +446,23 @@ public class frmConsultaAnimais extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnAtualizaTabela;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLocalizar;
     private javax.swing.JButton btnSair;
     private javax.swing.JComboBox<String> cmbPesquisarPor;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblAnimais;
+    private javax.swing.JTextField txtEspecie;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtIdade;
+    private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPesquisar;
     // End of variables declaration//GEN-END:variables
 }
