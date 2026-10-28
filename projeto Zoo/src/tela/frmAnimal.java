@@ -36,6 +36,11 @@ public class frmAnimal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnConsultaAnimal = new javax.swing.JButton();
         btnConsultaZelador = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +93,22 @@ public class frmAnimal extends javax.swing.JFrame {
         btnConsultaZelador.setText("Consulta Zelador");
         btnConsultaZelador.addActionListener(this::btnConsultaZeladorActionPerformed);
 
+        jMenu1.setText("Cadastro");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Consulta");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Serviço");
+
+        jMenuItem1.setText("Serviços");
+        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
+        jMenu3.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,7 +157,7 @@ public class frmAnimal extends javax.swing.JFrame {
                         .addComponent(btnSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnConsultaAnimal)
                             .addComponent(btnConsultaZelador))))
@@ -187,6 +208,11 @@ public class frmAnimal extends javax.swing.JFrame {
         tela3.setVisible(true);
     }//GEN-LAST:event_btnConsultaZeladorActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+         frmServicos tela3 = new frmServicos();
+        tela3.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
   
     public static void main(String args[]) {
       
@@ -200,6 +226,11 @@ public class frmAnimal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner spnIdade;
     private javax.swing.JTextField txtEspecie;
