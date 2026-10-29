@@ -10,6 +10,15 @@
 
 ---
 
+## Prazos acordados com a Turma
+1º Check - 03/11 (Tela principal / Banco de Dados e Tabelas / Modulos de Clientes)
+2º Check - 05/11 (Modulos de Veículos / Mecanicos )
+3º Check - 09/11 (Modulo de Serviços / Ordem de Serviços)
+
+###Entrega Final 10/11
+
+---
+
 ## 1. Objetivos de aprendizagem
 
 Ao final, nós deveremos ser capazes de:
